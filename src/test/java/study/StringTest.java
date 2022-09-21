@@ -25,4 +25,16 @@ public class StringTest {
     	Assertions.assertThat(str2).contains("1");
     	
     }
+    
+    @Test
+    void substring() {
+    	//given 
+    	String str = "(1,2)";
+    	
+    	//when
+    	String answer = str.substring(str.indexOf("(") + 1, str.indexOf(")"));
+    	
+    	//then 
+    	Assertions.assertThat(answer).isEqualTo("1,2");
+    }
 }
