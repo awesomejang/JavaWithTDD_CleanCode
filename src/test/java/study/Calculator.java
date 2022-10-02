@@ -5,16 +5,20 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 	
-	private int result = 0;
-	private String currentOperator;
+	private int result;
+	//private String currentOperator;
+	private Operator currentOperator;
 	private static final String regExp = "^[0-9]*$";
 	
 	public int calculate(String[] values) {
-		for(String str :  values) {
-			if(!Pattern.matches(regExp, str)) { // true = 숫자, false = 문자
-				currentOperator = str;
+		result = 0;
+		for(String input :  values) {
+			if(!Pattern.matches(regExp, input)) {
+				currentOperator = Operator.findOperator(input);
+				//currentOperator = str;
 			}else {
-				OperatorCalculate(currentOperator, Integer.parseInt(str));
+				result = currentOperator.operate(result, Integer.parseInt(input));
+				//OperatorCalculate(currentOperator, Integer.parseInt(str));
 			}
 		}
 		return result;
