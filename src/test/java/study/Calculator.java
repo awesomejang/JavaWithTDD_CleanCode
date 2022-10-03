@@ -12,16 +12,32 @@ public class Calculator {
 	
 	public int calculate(String[] values) {
 		result = 0;
-		for(String input :  values) {
-			if(!Pattern.matches(regExp, input)) {
-				currentOperator = Operator.findOperator(input);
-				//currentOperator = str;
-			}else {
-				result = currentOperator.operate(result, Integer.parseInt(input));
-				//OperatorCalculate(currentOperator, Integer.parseInt(str));
-			}
+		for(String input : values) {
+			calculateProcess(input);
 		}
 		return result;
+	}
+	
+	private boolean isNumber(String input) {
+		return Pattern.matches(regExp, input);
+	}
+	
+	private void runOperate(String input) {
+		int number = Integer.parseInt(input);
+		if(currentOperator == null) {
+			result = number;
+			return;
+		}
+		result = currentOperator.operate(result, number);
+	}
+	
+
+	private void calculateProcess(String input) {
+		if(isNumber(input)) {
+			runOperate(input);
+			return;
+		}
+		currentOperator = Operator.findOperator(input);
 	}
 	
 	private void OperatorCalculate(String currentOperator, int number) {
