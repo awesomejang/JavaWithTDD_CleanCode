@@ -21,18 +21,20 @@ public enum Operator {
 		this.operation = operation;
 	}
 	
-	private static final Map<String, String> CODE_MAP = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(Operator::getSymbol, Operator::name)));
+	private static final Map<String, String> CODE_MAP = Collections.unmodifiableMap(Stream.of(values()) // values() -> Operator객체의 요소 순차적으로 리턴
+																						  .collect(Collectors.toMap(Operator::getSymbol, Operator::name)));
 	
 	private String getSymbol() {
 		return this.symbol;
 	}
 	
 	public int operate(int first, int second) {
-		System.out.println("first = " + first + "se = " + second);
 		return operation.apply(first, second);
 	}
 	
 	public static Operator findOperator(String symbol) {
+		String operatorName = CODE_MAP.get(symbol);
+		if(operatorName == null) throw new IllegalStateException("해당 기호는 지원하지 않습니다. [" + symbol + "]");
 		return Operator.valueOf(CODE_MAP.get(symbol));
 	}
 	

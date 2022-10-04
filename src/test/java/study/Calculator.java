@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 public class Calculator {
 	
 	private int result;
-	//private String currentOperator;
 	private Operator currentOperator;
 	private static final String regExp = "^[0-9]*$";
 	
@@ -18,26 +17,24 @@ public class Calculator {
 		return result;
 	}
 	
+	private void calculateProcess(String input) {
+		if(isNumber(input)) {
+			runOperate(Integer.parseInt(input));
+			return;
+		}
+		currentOperator = Operator.findOperator(input);
+	}
+	
 	private boolean isNumber(String input) {
 		return Pattern.matches(regExp, input);
 	}
 	
-	private void runOperate(String input) {
-		int number = Integer.parseInt(input);
+	private void runOperate(int input) {
 		if(currentOperator == null) {
-			result = number;
+			result = input;
 			return;
 		}
-		result = currentOperator.operate(result, number);
-	}
-	
-
-	private void calculateProcess(String input) {
-		if(isNumber(input)) {
-			runOperate(input);
-			return;
-		}
-		currentOperator = Operator.findOperator(input);
+		result = currentOperator.operate(result, input);
 	}
 	
 	private void OperatorCalculate(String currentOperator, int number) {
@@ -78,7 +75,8 @@ public class Calculator {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String value = scanner.nextLine();
-		String[] values = value.split(" ");
+		//String[] values = value.split(" ");
+		String[] values = new Formula(value).splitFormula();
 		
 		Calculator cal = new Calculator();
 		System.out.println(cal.calculate(values));
