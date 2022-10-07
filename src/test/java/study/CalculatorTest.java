@@ -2,16 +2,18 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 	
-	private Calculator calculator = new Calculator();
+	private Calculator calculator;
 	
-	/*
-	 * @BeforeAll static void createCalculator() { calculator = new Calculator(); }
-	 */
+	@BeforeEach
+	void createCalculator() {
+		calculator = new Calculator();
+	}
 	
 	
 	@DisplayName("계산 기능 정상작동 확인 테스트")
@@ -42,7 +44,7 @@ public class CalculatorTest {
 		Assertions.assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> {
 			String[] values = new Formula("2 + 3 * 4 ) 2").splitFormula();
 			calculator.calculate(values);
-			});
+			}).withMessageContaining(")");
 		
 		
 	}
