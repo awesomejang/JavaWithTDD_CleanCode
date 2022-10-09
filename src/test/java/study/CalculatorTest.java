@@ -20,7 +20,7 @@ public class CalculatorTest {
 	@Test
 	void calculate() {
 		// given
-		String[] values = new Formula("2 + 3 * 4 / 2").splitFormula();
+		String[] values = new Formula("2 + 3 * 4 / 2").getFormula();
 		
 		//when 
 		int result = calculator.calculate(values);
@@ -33,7 +33,7 @@ public class CalculatorTest {
 	@Test
 	void isNullorEmptyTest() {
 		Assertions.assertThatThrownBy(() -> {
-				new Formula("").splitFormula();
+				new Formula("").getFormula();
 		}).isInstanceOf(IllegalStateException.class)
 		  .hasMessage("입력 값이 공백입니다.");
 	}
@@ -42,7 +42,7 @@ public class CalculatorTest {
 	@Test
 	void checkPermittedOperator() {
 		Assertions.assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> {
-			String[] values = new Formula("2 + 3 * 4 ) 2").splitFormula();
+			String[] values = new Formula("2 + 3 * 4 ) 2").getFormula();
 			calculator.calculate(values);
 			}).withMessageContaining(")");
 		

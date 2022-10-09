@@ -7,7 +7,8 @@ public class Calculator {
 	
 	private int result;
 	private Operator currentOperator;
-	private static final String regExp = "^[0-9]*$";
+	private static final Pattern regExp = Pattern.compile("^[0-9]*$");
+	//private static final String regExp = "^[0-9]*$";
 	
 	public int calculate(String[] values) {
 		result = 0;
@@ -26,7 +27,8 @@ public class Calculator {
 	}
 	
 	private boolean isNumber(String input) {
-		return Pattern.matches(regExp, input);
+		return regExp.matcher(input).find();
+		//return Pattern.matches(regExp, input);
 	}
 	
 	private void runOperate(int input) {
@@ -76,7 +78,7 @@ public class Calculator {
 		Scanner scanner = new Scanner(System.in);
 		String value = scanner.nextLine();
 		//String[] values = value.split(" ");
-		String[] values = new Formula(value).splitFormula();
+		String[] values = new Formula(value).getFormula();
 		
 		Calculator cal = new Calculator();
 		System.out.println(cal.calculate(values));
