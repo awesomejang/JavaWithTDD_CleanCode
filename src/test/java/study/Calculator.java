@@ -77,8 +77,8 @@ public class Calculator {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String value = scanner.nextLine();
-		//String[] values = value.split(" ");
 		String[] values = new Formula(value).getFormula();
+		//String[] values = value.split(" ");
 		
 		Calculator cal = new Calculator();
 		System.out.println(cal.calculate(values));

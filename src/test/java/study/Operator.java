@@ -35,8 +35,6 @@ public enum Operator {
 	public static Operator findOperator(String symbol) {
 		String operatorName = CODE_MAP.get(symbol);
 		if(operatorName == null) throw new IllegalStateException("해당 기호는 지원하지 않습니다. [" + symbol + "]");
-		return Operator.valueOf(CODE_MAP.get(symbol));
+		return Operator.valueOf(operatorName);
 	}
-	
-	
 }

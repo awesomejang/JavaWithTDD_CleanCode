@@ -6,11 +6,13 @@ public class Formula {
 	
 	//private String formula;
 	private String[] formula;
+	private final String splitMark = "";
 	
 	public Formula(String formula) {
-		if(StringUtils.isBlank(formula)) throw new IllegalStateException("입력 값이 공백입니다.");
-		
-		this.formula = formula.split(" ");
+		if(StringUtils.isBlank(formula)) {
+			throw new IllegalStateException("입력 값이 공백입니다.");
+		}
+		this.formula = formula.split(splitMark);
 	}
 	
 	

@@ -45,7 +45,5 @@ public class CalculatorTest {
 			String[] values = new Formula("2 + 3 * 4 ) 2").getFormula();
 			calculator.calculate(values);
 			}).withMessageContaining(")");
-		
-		
 	}
 }
