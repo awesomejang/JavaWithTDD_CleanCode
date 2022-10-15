@@ -10,6 +10,8 @@ public class baseballGameLuncher {
 		String inputNumber = kb.next();
 		
 		System.out.println(new playGame(inputNumber).compareNumber());
+		
+		
 		///
 	}
 	

@@ -15,12 +15,19 @@ public class playGame {
 		int ball = 0;
 		for (int i = 0; i < targetNumber.length(); i++) {
 				char target = targetNumber.charAt(i);
-			
+			for (int j = 0; j < inputNumber.length(); j++) {
+				if(target == inputNumber.charAt(j)) {
+					if(i == j) {
+						strike++;
+					}else {
+						ball++;
+					}
+				}
+			}
 		}
+		
 		return createResultForm(strike, ball);
 	}
-	
-	//private void judgeBallorStrike
 
 	private String createResultForm(int strike, int ball) {
 		String form = "";
