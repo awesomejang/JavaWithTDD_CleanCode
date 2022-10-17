@@ -10,6 +10,7 @@ public class playGame {
 		this.targetNumber = "214";
 	}
 	
+	/**
 	public String compareNumber() {
 		int strike = 0;
 		int ball = 0;
@@ -28,23 +29,5 @@ public class playGame {
 		
 		return createResultForm(strike, ball);
 	}
-
-	private String createResultForm(int strike, int ball) {
-		String form = "";
-		
-		if(ball > 0) {
-			form += String.valueOf(ball) + "볼";
-		}
-		
-		if(strike > 0) {
-			if(form != "") form += " ";
-			form += String.valueOf(strike) + "스트라이크";
-		}
-		
-		if(form.equals("")) {
-			form = "NOTHING";
-		}
-		return form;
-	}
-
+	*/
 }
