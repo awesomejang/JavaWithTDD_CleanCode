@@ -1,21 +1,25 @@
 package study.baseball;
 
+import java.util.List;
+
 public class PlayBall {
 
-	private String computerNumber;
-	private String playerNumber;
+	private List<Integer> computerNumbers;
+	private List<Integer> playerNumbers;
+	//private Integer computerNumber;
+	//private Integer playerNumber;
 	
-	public PlayBall(String playerNumber) {
-		this.computerNumber = String.valueOf(NumberGenerator.createRandomNumbers());
-		this.playerNumber = playerNumber;
+	public PlayBall(List<Integer> playerNumbers) {
+		this.computerNumbers = NumberGenerator.createRandomNumbers();
+		this.playerNumbers = playerNumbers;
 	}
 
-	public String getComputerNumber() {
-		return computerNumber;
+	public List<Integer> getComputerNumbers() {
+		return computerNumbers;
 	}
 
-	public String getPlayerNumber() {
-		return playerNumber;
+	public List<Integer> getPlayerNumbers() {
+		return playerNumbers;
 	}
 
 }
