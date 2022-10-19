@@ -7,25 +7,14 @@ import java.util.Scanner;
 
 public class Referee {
 
-	private PlayBall playBall;
-	
-	public Referee(PlayBall playBall) {
-		this.playBall = playBall;
-	}
-	
-	public String playGame() {
-		Scanner kb = new Scanner(System.in);
-		System.out.print("숫자를 입력해 주세요 : ");
-		String playerInput = kb.next();
-		
-		PlayBall playBall = new PlayBall(StringToInteger(playerInput));
-		
-		List<Integer> computerNumbers = playBall.getComputerNumbers();
-		List<Integer> playerNumbers = playBall.getPlayerNumbers();
-		
-		
-		
-		
+	public String playGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+		System.out.print(computerNumbers.get(0));
+		System.out.print(computerNumbers.get(1));
+		System.out.print(computerNumbers.get(2));
+		System.out.println();
+		System.out.print(playerNumbers.get(0));
+		System.out.print(playerNumbers.get(1));
+		System.out.print(playerNumbers.get(2));
 		return createResultForm(computerNumbers, playerNumbers);
 	}
 	
@@ -38,31 +27,16 @@ public class Referee {
 		return list;
 	}
 	
-	
-	
-	private boolean isStrikeOrBall(char computerNumber, char playerNumbers) {
-		boolean result = false;
-		if(computerNumber == playerNumbers) {
-			result = true;
-		}
-		return result;
-	}
-	
-	
-	private boolean isStrike(int i, int j) {
-		boolean result = false;
-		if(i == j) {
-			result = true;
-		}
-		return result;
-	}
-	
 	private String createResultForm(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 		String form = "";
 		
 		int total = Judgement.totalCount(computerNumbers, playerNumbers);
 		int strike = Judgement.totalStrike(computerNumbers, playerNumbers);
 		int ball = total - strike;
+		
+		//System.out.println("total = " + total);
+		//System.out.println("strike = " + strike);
+		//System.out.println("ball = " + ball);
 		
 		if(total == 0) {
 			form += "NOTHING";
@@ -71,7 +45,6 @@ public class Referee {
 		}else {
 			form += ball + "볼";
 		}
-		
 		return form;
 	}
 	
