@@ -15,8 +15,10 @@ public class baseballGameLuncher {
 			gameResult = referee.playGame(computerNumebers, askNumbers()); 
 			System.out.println(gameResult);
 		}
+		System.out.println("3개의 숫자를 모두 맞히셨습니다.! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		
-		
+		askAfterGame();
 	}
 	
 	public static List<Integer> askNumbers() {
@@ -29,5 +31,15 @@ public class baseballGameLuncher {
 			playerNumbers.add(Integer.valueOf(s));
 		}
 		return playerNumbers;
+	}
+	
+	public static void askAfterGame() {
+		Scanner kb = new Scanner(System.in);
+		Integer input = kb.nextInt();
+		if(input == 1) {
+			baseballGameLuncher.main(null);
+		}else {
+			return;
+		}
 	}
 }

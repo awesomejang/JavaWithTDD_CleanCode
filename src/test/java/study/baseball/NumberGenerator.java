@@ -15,7 +15,8 @@ public class NumberGenerator {
 	public static List<Integer> createRandomNumbers() {
 		List<Integer> randomNumbers = new ArrayList<>();
 		for (int i = 0; i < numberCnt; i++) {
-			randomNumbers.add(ThreadLocalRandom.current().nextInt(min, max + 1));
+			//randomNumbers.add(ThreadLocalRandom.current().nextInt(min, max + 1));
+			randomNumbers.add(ThreadLocalRandom.current().ints(min, max).distinct().limit(10).findAny().getAsInt());
 		}
 		return randomNumbers;
 	}

@@ -31,10 +31,6 @@ public class Referee {
 		int strike = Judgement.totalStrike(computerNumbers, playerNumbers);
 		int ball = total - strike;
 		
-		//System.out.println("total = " + total);
-		//System.out.println("strike = " + strike);
-		//System.out.println("ball = " + ball);
-		//strike > 0 && ball != 0
 		if(total == 0) {
 			form += "NOTHING";
 		}
