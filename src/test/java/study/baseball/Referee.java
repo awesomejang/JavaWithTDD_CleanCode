@@ -12,9 +12,6 @@ public class Referee {
 		System.out.print(computerNumbers.get(1));
 		System.out.print(computerNumbers.get(2));
 		System.out.println();
-		System.out.print(playerNumbers.get(0));
-		System.out.print(playerNumbers.get(1));
-		System.out.print(playerNumbers.get(2));
 		return createResultForm(computerNumbers, playerNumbers);
 	}
 	
@@ -37,14 +34,21 @@ public class Referee {
 		//System.out.println("total = " + total);
 		//System.out.println("strike = " + strike);
 		//System.out.println("ball = " + ball);
-		
+		//strike > 0 && ball != 0
 		if(total == 0) {
 			form += "NOTHING";
-		}else if(strike > 0) {
-			form += ball + "볼" + " " + strike + "스트라이크";
-		}else {
+		}
+		
+		if(ball > 0) {
 			form += ball + "볼";
 		}
+		
+		if(ball > 0 && strike > 0) {
+			form += " " + strike + "스트라이크";
+		}else if(ball == 0 && strike > 0) {
+			form += strike + "스트라이크";
+		}
+		
 		return form;
 	}
 	
