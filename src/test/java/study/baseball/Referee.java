@@ -8,11 +8,10 @@ import java.util.Scanner;
 public class Referee {
 
 	public String playGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		System.out.print(computerNumbers.get(0));
-		System.out.print(computerNumbers.get(1));
-		System.out.print(computerNumbers.get(2));
-		System.out.println();
-		return createResultForm(computerNumbers, playerNumbers);
+		int totalCount = Judgement.totalCount(computerNumbers, playerNumbers);
+		int strikeCount = Judgement.totalStrike(computerNumbers, playerNumbers);
+		
+		return createResultForm(totalCount, strikeCount);
 	}
 	
 	
@@ -24,25 +23,23 @@ public class Referee {
 		return list;
 	}
 	
-	private String createResultForm(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+	private String createResultForm(int totalCount, int strikeCount) {
 		String form = "";
 		
-		int total = Judgement.totalCount(computerNumbers, playerNumbers);
-		int strike = Judgement.totalStrike(computerNumbers, playerNumbers);
-		int ball = total - strike;
+		int ballCount = totalCount - strikeCount;
 		
-		if(total == 0) {
+		if(totalCount == 0) {
 			form += "NOTHING";
 		}
 		
-		if(ball > 0) {
-			form += ball + "볼";
+		if(ballCount > 0) {
+			form += ballCount + "볼";
 		}
 		
-		if(ball > 0 && strike > 0) {
-			form += " " + strike + "스트라이크";
-		}else if(ball == 0 && strike > 0) {
-			form += strike + "스트라이크";
+		if(ballCount > 0 && strikeCount > 0) {
+			form += " " + strikeCount + "스트라이크";
+		}else if(ballCount == 0 && strikeCount > 0) {
+			form += strikeCount + "스트라이크";
 		}
 		
 		return form;
