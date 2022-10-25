@@ -12,11 +12,6 @@ class op {
 	}
 }
 public class Main {
-	public static op oop = new op(5);
-	
 	public static void main(String[] args) {
-		System.out.println(oop.getT());
-		
-		//System.out.println(Operator.valueOf("PLUS").name());
 	}
 }
