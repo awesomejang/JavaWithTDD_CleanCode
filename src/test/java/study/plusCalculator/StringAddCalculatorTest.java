@@ -2,13 +2,17 @@ package study.plusCalculator;
 
 import static org.assertj.core.api.Assertions.in;
 
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
 
 /**
  * 
-[]주어진 문자열을 특정 구분자 기준으로 분리한다.
+[x]주어진 문자열을 특정 구분자 기준으로 분리한다.
  	[]커스텀 구분자를 존재를 인식한다.
 []커스텀 구분자가 있다면 해당 구분자로 문자열을 분리한다.
 [x] nullOR공백이 입력될 경우 0을 리턴한다.
@@ -34,6 +38,8 @@ public class StringAddCalculatorTest {
 			if(inputNumber.length() == 1) { // 하나의 숫자일 경우
 				return Integer.parseInt(inputNumber);
 			}
+			
+			
 			return sumResult;
 		}
 	}
@@ -53,6 +59,33 @@ public class StringAddCalculatorTest {
 		
 		sumResult = new StringAddCalculator().splitAndSum(null);
 		Assertions.assertThat(sumResult).isEqualTo(0);
+	}
+	
+	@Test
+	void splitAndSum_문자를기준으로숫자를분리한다() {
+		// given
+		String input = "1,2:3";
+		String separators = ",|:";
+		String[] numbers = input.split(separators);
+		int sum = 0;
 		
+		// when
+		for (int i = 0; i < numbers.length; i++) {
+			sum += Integer.parseInt(numbers[i]);
+		}
+		
+		// then
+		Assertions.assertThat(sum).isEqualTo(6);
+	}
+	
+	@Test
+	void splitAndSum_커스텀구분자를인식한다() {
+		Pattern customSeparator = Pattern.compile("//");
+		String input = "//;\\n1;2;3";
+		//Assertions.assertThat(customSeparator.matcher(input).find()).isTrue();
+		Matcher m = customSeparator.matcher(input);
+		while(m.find()) {
+			System.out.println(m.group());
+		}
 	}
 }
