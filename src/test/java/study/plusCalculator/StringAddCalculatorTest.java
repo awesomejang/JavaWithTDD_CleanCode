@@ -38,8 +38,6 @@ public class StringAddCalculatorTest {
 			if(inputNumber.length() == 1) { // 하나의 숫자일 경우
 				return Integer.parseInt(inputNumber);
 			}
-			
-			
 			return sumResult;
 		}
 	}
@@ -80,12 +78,26 @@ public class StringAddCalculatorTest {
 	
 	@Test
 	void splitAndSum_커스텀구분자를인식한다() {
+		// given
+		//Pattern customSeparator = Pattern.compile("//");
 		Pattern customSeparator = Pattern.compile("//");
 		String input = "//;\\n1;2;3";
-		//Assertions.assertThat(customSeparator.matcher(input).find()).isTrue();
-		Matcher m = customSeparator.matcher(input);
-		while(m.find()) {
-			System.out.println(m.group());
-		}
+		// when
+		Matcher matcher = customSeparator.matcher(input);
+		// then
+		Assertions.assertThat(matcher.find()).isTrue();
+		
 	}
+	
+	@Test
+	void splitAndSum_커스텀구분자가있는문자열의합() {
+		// given
+		String input = "//;\\n1;2;3";
+		int customSeparatorIndex = 2; 
+		String customSeparator = input.substring(customSeparatorIndex, input.indexOf("\\"));
+		//String[] numbers = input.substring("n")
+		
+		
+	}
+	
 }
