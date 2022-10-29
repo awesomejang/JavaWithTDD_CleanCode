@@ -3,8 +3,6 @@ package study.plusCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import study.plusCalculator.StringAddCalculatorTest.StringAddCalculator;
-
 /**
  * 
 []주어진 문자열을 특정 구분자 기준으로 분리한다.
