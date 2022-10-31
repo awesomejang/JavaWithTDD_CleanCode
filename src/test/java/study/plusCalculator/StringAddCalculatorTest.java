@@ -27,7 +27,7 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class StringAddCalculatorTest {
 	
-	private static final Pattern regExp = Pattern.compile("^[0-9]*$");
+	private static final Pattern numberRegExp = Pattern.compile("^[0-9]+$");
 	private StringAddCalculator stringAddCalculator = new StringAddCalculator();
 	
 	@Test
@@ -59,14 +59,12 @@ public class StringAddCalculatorTest {
 	@Test
 	void splitAndSum_커스텀구분자를인식한다() {
 		// given
-		//Pattern customSeparator = Pattern.compile("//");
-		Pattern customSeparator = Pattern.compile("//");
 		String input = "//;\\n1;2;3";
+		//Pattern customSeparator = Pattern.compile("//");
 		// when
-		Matcher matcher = customSeparator.matcher(input);
+		int calculateResult = stringAddCalculator.splitAndSum(input);
 		// then
-		Assertions.assertThat(matcher.find()).isTrue();
-		
+		Assertions.assertThat(calculateResult).isEqualTo(6);
 	}
 	
 	@Test
@@ -84,9 +82,10 @@ public class StringAddCalculatorTest {
 	}
 	
 	@Test
-	void splitAndSum_문자나음수가입려되면예외발생() {
-		String minusInput = "-1,2,3";
-		
-		
+	void splitAndSum_양수가아닌다른숫자가입력되면예외발생() {
+		String[] minusInputs = {"-1", "2", "3"};
+		for(String input : minusInputs) {
+			System.out.println(numberRegExp.matcher(input).find());			
+		}
 	}
 }

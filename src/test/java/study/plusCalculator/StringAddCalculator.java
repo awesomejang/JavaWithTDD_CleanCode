@@ -7,8 +7,8 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class StringAddCalculator {
 	
-	private static final Pattern regExp = Pattern.compile("^[0-9]*$");
-	private static final Pattern customSeparator = Pattern.compile("^[0-9]*$");
+	private static final Pattern numberRegExp = Pattern.compile("^[0-9]*$");
+	private static final Pattern customSeparator = Pattern.compile("//");
 	
 	public int splitAndSum(String inputNumber) {
 		int sumResult = 0;
@@ -23,7 +23,8 @@ public class StringAddCalculator {
 		}
 		
 		if(isCustomSeparatorExist(inputNumber)) {
-			
+			separators = String.valueOf(inputNumber.charAt(2));
+			inputNumber = inputNumber.substring(5);
 		}
 		
 		String[] numbers = inputNumber.split(separators);
@@ -43,6 +44,7 @@ public class StringAddCalculator {
 	private int calculate(String[] numbers) {
 		int sumResult = 0;
 		for(String number : numbers) {
+			isMinusNumber(number); 
 			sumResult += Integer.parseInt(number);
 		}
 		return sumResult;
@@ -50,5 +52,11 @@ public class StringAddCalculator {
 	
 	private boolean isCustomSeparatorExist(String input) {
 		return customSeparator.matcher(input).find();
+	}
+	
+	private void isMinusNumber(String number) {
+		if(!numberRegExp.matcher(number).find()) {
+			throw new RuntimeException("입력값에 음수가 있습니다.");
+		}
 	}
 }
