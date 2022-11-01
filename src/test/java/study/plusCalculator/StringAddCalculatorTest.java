@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.assertj.core.api.Assertions;
+import org.assertj.core.api.Assertions;import org.assertj.core.internal.bytebuddy.implementation.attribute.FieldAttributeAppender.ForInstrumentedField;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
 
@@ -31,44 +31,43 @@ public class StringAddCalculatorTest {
 	private StringAddCalculator stringAddCalculator = new StringAddCalculator();
 	
 	@Test
-	void splitAndSum_하나의숫자() {
+	void calculate_하나의숫자() {
 		// when
-		int sumResult = stringAddCalculator.splitAndSum("1");
+		int sumResult = stringAddCalculator.calculate("1");
 		// then
 		Assertions.assertThat(sumResult).isEqualTo(1);
 	}
 	
 	@Test
-	void splitAndSum_공백입력() {
-		int sumResult = new StringAddCalculator().splitAndSum("");
+	void calculate_공백입력() {
+		int sumResult = new StringAddCalculator().calculate("");
 		Assertions.assertThat(sumResult).isEqualTo(0);
 		
-		sumResult = new StringAddCalculator().splitAndSum(null);
+		sumResult = new StringAddCalculator().calculate(null);
 		Assertions.assertThat(sumResult).isEqualTo(0);
 	}
 	
 	@Test
-	void splitAndSum_문자를기준으로숫자를분리한다() {
+	void calculate_문자를기준으로숫자를분리한다() {
 		// when
-		int SumResult = stringAddCalculator.splitAndSum("1,2:3");
+		int SumResult = stringAddCalculator.calculate("1,2:3");
 		
 		// then
 		Assertions.assertThat(SumResult).isEqualTo(6);
 	}
 	
 	@Test
-	void splitAndSum_커스텀구분자를인식한다() {
+	void calculate_커스텀구분자를인식한다() {
 		// given
 		String input = "//;\\n1;2;3";
-		//Pattern customSeparator = Pattern.compile("//");
 		// when
-		int calculateResult = stringAddCalculator.splitAndSum(input);
+		int calculateResult = stringAddCalculator.calculate(input);
 		// then
 		Assertions.assertThat(calculateResult).isEqualTo(6);
 	}
 	
 	@Test
-	void splitAndSum_커스텀구분자가있는문자열의합() {
+	void calculate_커스텀구분자가있는문자열의합() {
 		// given
 		String input = "//;\\n1;2;3";
 		String separator = ";";
@@ -82,10 +81,13 @@ public class StringAddCalculatorTest {
 	}
 	
 	@Test
-	void splitAndSum_양수가아닌다른숫자가입력되면예외발생() {
-		String[] minusInputs = {"-1", "2", "3"};
-		for(String input : minusInputs) {
-			System.out.println(numberRegExp.matcher(input).find());			
-		}
+	void calculate_양수가아닌다른숫자가입력되면예외발생() {
+		// given 
+		String minusInputs = "-1,2,3";
+		// when & then
+		Assertions.assertThatThrownBy(() -> {
+			stringAddCalculator.calculate(minusInputs);
+		}).isInstanceOf(RuntimeException.class)
+		  .hasMessage("입력값에 음수가 있습니다.");
 	}
 }
