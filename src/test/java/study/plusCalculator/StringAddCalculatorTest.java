@@ -17,7 +17,7 @@ import org.junit.platform.commons.util.StringUtils;
 []커스텀 구분자가 있다면 해당 구분자로 문자열을 분리한다.
 [x] nullOR공백이 입력될 경우 0을 리턴한다.
 [x] 하나의 숫자를 전달할 경우 해당 값을 리턴한다.
-[] 음수&문자를 전달할 경우 RuntimeException을 발생시킨다.
+[x] 음수&문자를 전달할 경우 RuntimeException을 발생시킨다.
 
 [x]구분된 숫자를 총합하여 리턴한다.
  *
