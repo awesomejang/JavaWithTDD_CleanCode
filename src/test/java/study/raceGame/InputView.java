@@ -11,8 +11,6 @@ public class InputView {
 		this.cntGame = cntGame;
 	}
 	
-	
-	
 	public String[] getPlayers() {
 		return players;
 	}
