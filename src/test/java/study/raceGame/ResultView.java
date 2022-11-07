@@ -1,8 +1,8 @@
 package study.raceGame;
 
+import java.util.Iterator;
 import java.util.List;
 
-import study.raceGame.CarTest.Car;
 
 public class ResultView {
 	public static void printRaceResult(String winners) {
@@ -20,6 +20,9 @@ public class ResultView {
 	}
 	
 	public static void printRaceProcess(List<Car> players) {
-		
+		for(Car car : players) {
+			System.out.println(car.getName() + " " + ":" + " " + car.getLocation());
+		}
+		System.out.println();
 	}
 }
