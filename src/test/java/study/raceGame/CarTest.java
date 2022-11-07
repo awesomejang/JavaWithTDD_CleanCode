@@ -42,7 +42,5 @@ public class CarTest {
 			Car car = new Car(inputName);
 		}).isInstanceOf(IllegalArgumentException.class)
 		  .hasMessage("자동차의 이름은 " + limitLength + "자를 초과 할 수 없습니다.");
-		
-		
 	}
 }
