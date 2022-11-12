@@ -1,5 +1,6 @@
 package study.raceGame;
 
+
 public class Car {
 	private final int LIMIT_NAME_LENGTH = 5; 
 	
@@ -12,6 +13,20 @@ public class Car {
 		}
 		this.name = name;
 		this.location = "";
+	}
+	
+	// boolean 성공여부 
+	public boolean isCarRun() {
+		boolean carRun = false;
+		int randomNumber = NumberGenerator.createRandomNumbers();
+		if(randomNumber >= Constant.CAR_GOING_MIN_NUMBER) {
+			carRun = true;
+		}
+		return carRun;
+	}
+	
+	public void RunLocation() {
+		this.location += Constant.CAR_POSITION_INDEX;
 	}
 
 	public String getName() {

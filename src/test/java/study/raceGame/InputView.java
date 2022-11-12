@@ -7,7 +7,7 @@ public class InputView {
 	private int cntGame;
 	
 	private InputView(String players, int cntGame) {
-		this.players = players.split(",");
+		this.players = players.split(Constant.CARNAME_SPLIT_BORDER);
 		this.cntGame = cntGame;
 	}
 	

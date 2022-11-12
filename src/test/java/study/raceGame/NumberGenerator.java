@@ -13,5 +13,4 @@ public class NumberGenerator {
 		int randomNumber = ThreadLocalRandom.current().ints(min, max).findAny().getAsInt();
 		return randomNumber;
 	}
-
 }
