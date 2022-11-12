@@ -11,8 +11,9 @@ public class RaceGame {
 	}
 
 	public void playGame(int cntGame) {
+		ResultView.printRaceResultStart();
 		for (int i = 0; i < cntGame; i++) {
-			
+			moveCars();
 		}
 	}
 
@@ -23,11 +24,15 @@ public class RaceGame {
 	}
 	
 	private void moveCars() {
-		ResultView resultView = new ResultView();
 		for(Car car : this.players) {
 			if(car.isCarRun()) {
 				car.RunLocation();
 			}
 		}
+		printRaceState();
+	}
+	
+	private void printRaceState() {
+		ResultView.printRaceProcess(this.players);
 	}
 }

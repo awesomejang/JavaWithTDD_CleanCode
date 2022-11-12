@@ -5,6 +5,11 @@ import java.util.List;
 
 
 public class ResultView {
+	
+	public static void printRaceResultStart() {
+		System.out.println(Constant.RACING_RESULT_ANNOUNCEMENT);
+	}
+	
 	public static void printRaceResult(String winners) {
 		System.out.println(winners + "가 최종 우승했습니다.");
 		/**

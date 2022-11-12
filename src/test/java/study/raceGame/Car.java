@@ -3,7 +3,6 @@ package study.raceGame;
 
 public class Car {
 	private final int LIMIT_NAME_LENGTH = 5; 
-	
 	private String name;
 	private String location;
 	
@@ -17,12 +16,12 @@ public class Car {
 	
 	// boolean 성공여부 
 	public boolean isCarRun() {
-		boolean carRun = false;
+		boolean isCarRun = false;
 		int randomNumber = NumberGenerator.createRandomNumbers();
 		if(randomNumber >= Constant.CAR_GOING_MIN_NUMBER) {
-			carRun = true;
+			isCarRun = true;
 		}
-		return carRun;
+		return isCarRun;
 	}
 	
 	public void RunLocation() {
