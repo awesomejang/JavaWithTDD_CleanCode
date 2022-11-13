@@ -4,8 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGame {
-	List<Car> players = new ArrayList<>();
-
+	//private List<Car> players = new ArrayList<>();
+	private RacePlayers racePlayers;
+	
+	private void readyToGame(String[] carNames) {
+		List<Car> players = new ArrayList<>();
+		for (String carName : carNames) {
+			players.add(new Car(carName));
+		}
+		this.racePlayers = new RacePlayers(players);
+	}
+	
 	public RaceGame(String[] carNames) {
 		readyToGame(carNames);
 	}
@@ -15,16 +24,13 @@ public class RaceGame {
 		for (int i = 0; i < cntGame; i++) {
 			moveCars();
 		}
+		
+		//ResultView.printRaceResult();
+		
 	}
 
-	private void readyToGame(String[] carNames) {
-		for (String carName : carNames) {
-			this.players.add(new Car(carName));
-		}
-	}
-	
 	private void moveCars() {
-		for(Car car : this.players) {
+		for(Car car : racePlayers.getRacePlayers()) {
 			if(car.isCarRun()) {
 				car.RunLocation();
 			}
@@ -33,6 +39,12 @@ public class RaceGame {
 	}
 	
 	private void printRaceState() {
-		ResultView.printRaceProcess(this.players);
+		ResultView.printRaceProcess(racePlayers.getRacePlayers());
 	}
+	
+	/**
+	private String getWinners() {
+		
+	}
+	*/
 }
