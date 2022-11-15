@@ -18,12 +18,10 @@ public class RacePlayers {
 	
 	public String getWinners() {
 		StringJoiner winners = new StringJoiner(",");
-		//String winners = "";
 		int winnerLocation = getWinnerLocation();
 		for(Car car : racePlayers) {
 			if(car.getLocation().length() == winnerLocation) {
 				winners.add(car.getName());
-				//winners.ans join(",", winners, car.getName());
 			}
 		}
 		return winners.toString();
