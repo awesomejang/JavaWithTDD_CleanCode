@@ -2,7 +2,11 @@ package study.raceGame;
 
 
 
+import java.util.Iterator;
+
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 //Car
@@ -15,32 +19,33 @@ import org.junit.jupiter.api.Test;
 // [] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다.
 //  [] 우승자는 한명 이상일 수 있다.
 public class CarTest {
+
+	private Car car;
+	private final int CAR_NAME_MAX_LENGTH = Constant.CAR_NAME_MAX_LENGTH;
 	
-	class Car {
-		private final int LIMIT_NAME_LENGTH = 5; 
-		
-		private String name;
-		private String location;
-		
-		public Car(String name) {
-			if(name.length() > LIMIT_NAME_LENGTH) {
-				throw new IllegalArgumentException("자동차의 이름은 " +  LIMIT_NAME_LENGTH + "자를 초과 할 수 없습니다.");
-			}
-			this.name = name;
-			this.location = "";
-		} 
+	@BeforeEach
+	void initCar() {
+		car = new Car("carA");
 	}
 	
 	@Test
+	@DisplayName("자동차의 이름은 5자를 초과할 수 없습니다.")
 	void isOverToLimitNameLengthTest() {
-		// given
-		String inputName = "abcdef";
-		int limitLength = new Car("TEST").LIMIT_NAME_LENGTH;
 		
 		// when & then
 		Assertions.assertThatThrownBy(() -> {
-			Car car = new Car(inputName);
+			Car car = new Car("MYCARA");
+			
 		}).isInstanceOf(IllegalArgumentException.class)
-		  .hasMessage("자동차의 이름은 " + limitLength + "자를 초과 할 수 없습니다.");
+		  .hasMessage("자동차의 이름은 " + CAR_NAME_MAX_LENGTH + "자를 초과 할 수 없습니다.");
+	}
+	
+	@Test
+	@DisplayName("자동차의 진행단계를 증가시킨다.")
+	void RunLocationTest() {
+		for (int i = 1; i < 4; i++) {
+			car.RunLocation();
+			Assertions.assertThat(car.getLocation().length()).isEqualTo(i);
+		}
 	}
 }

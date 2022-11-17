@@ -15,10 +15,15 @@ public class ResultView {
 	}
 	
 	public static void printRaceProcess(List<Car> players) {
+		players.stream().forEach(car -> {
+			System.out.println(String.format(Constant.RACING_GAMEMID_FORMAT_ANNOUNCEMENT, car.getName(), car.getLocation()));
+		});
+		/**
 		for(Car car : players) {
 			System.out.println(String.format(Constant.RACING_GAMEMID_FORMAT_ANNOUNCEMENT, car.getName(), car.getLocation()));
 			//System.out.println(car.getName() + " " + ":" + " " + car.getLocation());
 		}
+		*/
 		System.out.println();
 	}
 }

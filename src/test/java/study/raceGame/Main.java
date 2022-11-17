@@ -6,6 +6,5 @@ public class Main {
 		
 		RaceGame raceGame = new RaceGame(inputView.getPlayers());
 		raceGame.playGame(inputView.getCntGame());
-		//new RaceGame().playGame();
 	}
 }

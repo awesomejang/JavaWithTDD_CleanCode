@@ -40,9 +40,4 @@ public class RaceGame {
 		ResultView.printRaceProcess(racePlayers.getRacePlayers());
 	}
 	
-	/**
-	private String getWinners() {
-		
-	}
-	*/
 }
