@@ -3,10 +3,12 @@ package study.raceGame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class RacePlayers {
 
 	private List<Car> racePlayers;
+	private int winnerLocation = 0;
 	
 	public RacePlayers(List<Car> racePlayers) {
 		this.racePlayers = racePlayers; 
@@ -17,18 +19,16 @@ public class RacePlayers {
 	}
 	
 	public String getWinners() {
-		StringJoiner winners = new StringJoiner(",");
+		//StringJoiner winners = new StringJoiner(",");
 		int winnerLocation = getWinnerLocation();
-		for(Car car : racePlayers) {
-			if(car.getLocation().length() == winnerLocation) {
-				winners.add(car.getName());
-			}
-		}
-		return winners.toString();
+		return racePlayers.stream().filter(car -> car.getLocation().length() == winnerLocation)
+								   .map(car -> car.getName())
+		                           .collect(Collectors.joining(","));
+		
 	}
 	
 	public int getWinnerLocation() {
-		int winnerLocation = 0;
+		//int winnerLocation = 0;
 		for(Car car : racePlayers) {
 			winnerLocation = Math.max(winnerLocation, car.getLocation().length());
 		}

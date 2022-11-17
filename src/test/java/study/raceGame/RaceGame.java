@@ -2,6 +2,7 @@ package study.raceGame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class RaceGame {
 	//private List<Car> players = new ArrayList<>();
@@ -30,11 +31,9 @@ public class RaceGame {
 	}
 
 	private void moveCars() {
-		for(Car car : racePlayers.getRacePlayers()) {
-			if(car.isCarRun()) {
-				car.RunLocation();
-			}
-		}
+		racePlayers.getRacePlayers().stream()
+		                            .filter(car -> car.isCarRun())
+		                            .forEach(car -> car.RunLocation());
 		printRaceState();
 	}
 	

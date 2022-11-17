@@ -40,7 +40,6 @@ public class RacePlayersTest {
 	@Test
 	void getWinnerTest() {
 		String winners = racePlayers.getWinners();
-		
 		Assertions.assertThat(winners).isEqualTo("C,D");
 	}
 	
