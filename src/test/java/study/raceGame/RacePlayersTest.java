@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -38,12 +39,14 @@ public class RacePlayersTest {
 	}
 	
 	@Test
+	@DisplayName("우승자 이름을 리턴한다.")
 	void getWinnerTest() {
 		String winners = racePlayers.getWinners();
 		Assertions.assertThat(winners).isEqualTo("C,D");
 	}
 	
 	@Test
+	@DisplayName("우승자의 위치정보를 리턴한다.")
 	void getWinnerLocationTest() {
 		int winnerLocation = this.racePlayers.getWinnerLocation();
 		

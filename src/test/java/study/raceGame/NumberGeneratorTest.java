@@ -14,11 +14,9 @@ public class NumberGeneratorTest {
 	//@Test
 	@RepeatedTest(value =  50, name = "랜덤숫자가 설정한 범위에 있는지 테스트")
 	void createRandomNumberTest() {
+		// given
 		int randomNumber = NumberGenerator.createRandomNumbers();
-		System.out.println(randomNumber);
+		// when then 
 		Assertions.assertThat(randomNumber >= min && randomNumber <= max).isTrue();
-		//Assertions.assertThat(randomNumber).is
-		
-		
 	}
 }

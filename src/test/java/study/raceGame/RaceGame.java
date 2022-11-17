@@ -25,7 +25,6 @@ public class RaceGame {
 		for (int i = 0; i < cntGame; i++) {
 			moveCars();
 		}
-		
 		ResultView.printRaceResult(racePlayers.getWinners());
 		
 	}
