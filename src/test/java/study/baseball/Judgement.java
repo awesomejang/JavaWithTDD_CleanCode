@@ -5,6 +5,7 @@ import java.util.List;
 public class Judgement {
 	
 	public static int totalCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+
 		int totalCount = 0;
 		for (int i = 0; i < playerNumbers.size(); i++) {
 			if(computerNumbers.contains(playerNumbers.get(i))) {

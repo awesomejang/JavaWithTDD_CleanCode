@@ -2,7 +2,9 @@ package study.raceGame;
 
 
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,12 +22,14 @@ import org.junit.jupiter.api.Test;
 //  [] 우승자는 한명 이상일 수 있다.
 public class CarTest {
 
-	private Car car;
+	private Car car = new Car("carA");;
 	private final int CAR_NAME_MAX_LENGTH = Constant.CAR_NAME_MAX_LENGTH;
 	
+	// https://github.com/slipp/jwp-book/issues/1 테스트코드의 생명주기에 대한 글 
 	@BeforeEach
 	void initCar() {
-		car = new Car("carA");
+		//car = new Car("carA");
+		System.out.println("init");
 	}
 	
 	@Test
@@ -48,4 +52,29 @@ public class CarTest {
 			Assertions.assertThat(car.getLocation().length()).isEqualTo(i);
 		}
 	}
+	
+	List<String> list = new ArrayList();
+
+    @Test
+    public void go1() {
+    	car.RunLocation();
+    	System.out.println("go1 = " + car.getLocation());
+        list.add("go1");
+        System.out.println(list);
+    }
+
+    @Test
+    public void go2(){
+        list.add("go2");
+        System.out.println(list);
+
+    }
+
+    @Test
+    public void go3(){
+        list.add("go3");
+        System.out.println(list);
+
+    }
+    
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class baseballGameLuncher {
-	
+
 	public static void main(String[] args) {
 		final List<Integer> computerNumebers = NumberGenerator.createRandomNumbers();
 		final Referee referee = new Referee();
@@ -19,6 +19,8 @@ public class baseballGameLuncher {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		
 		askAfterGame();
+
+
 	}
 	
 	public static List<Integer> askNumbers() {

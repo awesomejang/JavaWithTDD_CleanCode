@@ -20,7 +20,7 @@ public enum Operator {
 		this.symbol = symbol;
 		this.operation = operation;
 	}
-	
+
 	private static final Map<String, String> CODE_MAP = Collections.unmodifiableMap(Stream.of(values()) // values() -> Operator객체의 요소 순차적으로 리턴
 																						  .collect(Collectors.toMap(Operator::getSymbol, Operator::name)));
 	
