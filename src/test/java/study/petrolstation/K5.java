@@ -2,18 +2,24 @@ package study.petrolstation;
 
 public class K5 extends Car{
 
+    private final String carName = "K5";
+    private final double fuelEfficiency = 13;
+    private double distance;
+    public K5(double distance) {
+        this.distance = distance;
+    }
+
     @Override
     String getCarName() {
-        return null;
+        return this.carName;
     }
 
     @Override
-    int getFuelEfficiency() {
-        return 0;
+    double getFuelEfficiency() {
+        return this.fuelEfficiency;
     }
-
     @Override
-    int getEssentialFuel() {
-        return 0;
+    double getDistance() {
+        return this.distance;
     }
 }

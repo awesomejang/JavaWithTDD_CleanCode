@@ -1,8 +1,19 @@
 package study.petrolstation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RentCompany {
-    public static void main(String[] args) {
-        String property = System.getProperty("line.separator");
-        System.out.println(property);
+   private List<Car> carList = new ArrayList<>();
+
+   public static RentCompany create() {
+       return new RentCompany();
+   }
+   public void addCar(Car car) {
+       carList.add(car);
+   }
+
+    public List<Car> getCarList() {
+        return this.carList;
     }
 }
