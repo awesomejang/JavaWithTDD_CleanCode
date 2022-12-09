@@ -13,6 +13,11 @@ public class RentCompany {
        carList.add(car);
    }
 
+   public void generateReport() {
+       for (Car car : carList) {
+           System.out.println(car.getCarName() + " : " + Math.round(car.getEssentialFuel()) + "리터");
+       }
+   }
     public List<Car> getCarList() {
         return this.carList;
     }
