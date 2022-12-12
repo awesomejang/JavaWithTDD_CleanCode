@@ -1,6 +1,4 @@
-package study.plusCalculator;
-
-import static study.plusCalculator.CustomConstant.CUSTOM_SEPARATOR_INDEX;
+package study.baseball.plusCalculator;
 
 import java.util.regex.Pattern;
 
@@ -23,6 +21,6 @@ public class Separator {
 	}
 	
 	private String changeToCustomSeparator(String inputNumber) {
-		return String.valueOf(inputNumber.charAt(CUSTOM_SEPARATOR_INDEX));
+		return String.valueOf(inputNumber.charAt(CustomConstant.CUSTOM_SEPARATOR_INDEX));
 	}
 }

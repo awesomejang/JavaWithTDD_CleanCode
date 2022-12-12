@@ -1,4 +1,4 @@
-package study.plusCalculator;
+package study.baseball.plusCalculator;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

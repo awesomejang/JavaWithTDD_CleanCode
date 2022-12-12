@@ -1,4 +1,4 @@
-package study.plusCalculator;
+package study.baseball.plusCalculator;
 
 public class CustomConstant {
 	
